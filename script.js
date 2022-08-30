@@ -11,6 +11,8 @@ calculate.addEventListener("click", () => {
     inputCurrent.value == ""
   ) {
     output.innerText = "Please enter values in all the fields";
+  } else if (Number(inputQuantity.value) <= 0) {
+    output.innerText = "Quantity should be greater than 0";
   } else {
     initialPrice = Number(inputInitial.value);
     quantity = Number(inputQuantity.value);
