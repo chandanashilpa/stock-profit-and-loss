@@ -11,8 +11,12 @@ calculate.addEventListener("click", () => {
     inputCurrent.value == ""
   ) {
     output.innerText = "Please enter values in all the fields";
-  } else if (Number(inputQuantity.value) <= 0) {
-    output.innerText = "Quantity should be greater than 0";
+  } else if (
+    Number(inputQuantity.value) <= 0 ||
+    Number(inputInitial.value) <= 0 ||
+    Number(inputCurrent.value) <= 0
+  ) {
+    output.innerText = "All values should be greater than 0";
   } else {
     initialPrice = Number(inputInitial.value);
     quantity = Number(inputQuantity.value);
@@ -21,12 +25,14 @@ calculate.addEventListener("click", () => {
       var priceDiff = currentPrice - initialPrice;
       var profit = priceDiff * quantity;
       var profitPercent = (priceDiff / initialPrice) * 100;
+
       output.innerText =
         "Your profit is " +
         profit +
         " and profit percentage is " +
         profitPercent.toFixed(2) +
         "%";
+      output.style.color = "Green";
     } else if (currentPrice < initialPrice) {
       var priceDiff = initialPrice - currentPrice;
       var loss = priceDiff * quantity;
@@ -37,9 +43,11 @@ calculate.addEventListener("click", () => {
         " and loss percentage is " +
         lossPercent.toFixed(2) +
         "%";
+      output.style.color = "Red";
     } else {
       output.innerText =
         "Since the current price of your stocks is equal to the initial price there's no profit/loss";
+      output.style.color = "White";
     }
   }
 });
