@@ -11,12 +11,10 @@ calculate.addEventListener("click", () => {
     inputCurrent.value == ""
   ) {
     output.innerText = "Please enter values in all the fields";
-  } else if (
-    Number(inputQuantity.value) <= 0 ||
-    Number(inputInitial.value) <= 0 ||
-    Number(inputCurrent.value) <= 0
-  ) {
-    output.innerText = "All values should be greater than 0";
+  } else if (Number(inputQuantity.value) <= 0) {
+    output.innerText = "Quantity should be greater than 0";
+  } else if (Number(inputInitial.value) < 0 || Number(inputCurrent.value) < 0) {
+    output.innerText = "Stock prices can't be negative";
   } else {
     initialPrice = Number(inputInitial.value);
     quantity = Number(inputQuantity.value);
